@@ -1,3 +1,5 @@
+const botao = document.querySelector('#btn-search')
+
 async function pegarAPI () {
    const url = `https://api.github.com`
    const response =  await fetch(url)
