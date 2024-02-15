@@ -9,7 +9,7 @@ async function pegarUsuarios () {
    const {avatar_URL, bio, name, repos_url, 
       public_repos} = data 
    console.log(bio)
-
+   const perfil = document.querySelector('.profile-data')
 
 }
 console.log(await pegarUsuarios())
