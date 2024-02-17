@@ -29,7 +29,7 @@ async function pegarUsuarios(NameUser) {
       let li = '';
       for (let i = 0; i <= 10; i++) {
          const { name, html_url } = data[i]
-         li += `<li><a href="${html_url}">${name}</a></li>`
+         li += `<li><a href="${html_url}" target="_black">${name}</a></li>`
       }
 
       perfil.innerHTML += `
