@@ -16,8 +16,8 @@ async function pegarUsuarios(NameUser) {
    <div class="info">
    <img src="${avatar_url}" alt="foto de perfil"/>
    <div class="data">
-      <h1>${name}</h1>
-      <p>${bio}</p>
+      <h1>${name ?? "não possui nome 😢"}</h1>
+      <p>${bio ?? "não possui bio 😢"}</p>
    </div>
    </div>`
 
