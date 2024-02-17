@@ -9,7 +9,7 @@ async function pegarUsuarios(NameUser) {
    const url = `https://api.github.com/users/${NameUser}`
    const response = await fetch(url)
    const data = await response.json()
-   const { avatar_url, bio, name} = data
+   const { avatar_url, bio, name } = data
 
    const perfil = document.querySelector('.profile-data')
    perfil.innerHTML = `
@@ -25,15 +25,24 @@ async function pegarUsuarios(NameUser) {
       const url = `https://api.github.com/users/${NameUser}/repos`
       const response = await fetch(url)
       const data = await response.json()
-       perfil.innerHTML += `
-      <h2>Repositórios</h2>
-      <div class="repositories">
-      <ul>
-         <li><a href="#">github</a></li>
-      </ul>
-    </div>`
-      
-   }
+      console.log(data)
+      const [{ name, html_url }] = data
 
-   // await pegarRepositorios()
+      let li = '';
+      for (let i = 0; i <= 10; i++) {
+         li += `<li><a href="${html_url}">${name}</a></li>`
+      }
+
+      perfil.innerHTML += `
+      <div class="repositories">
+      <h2>Repositórios</h2>
+         <div class="repositories">
+         <ul> ${li} </ul>
+      </div>
+      `
+
+   }
+   await pegarRepositorios()
+
+
 }
