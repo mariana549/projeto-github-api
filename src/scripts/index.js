@@ -1,13 +1,16 @@
 const botao = document.querySelector('#btn-search')
-const url = `https://api.github.com/users/mariana549`
-   // const inputText = document.querySelector('#input-search')
 
-async function pegarUsuarios () {
+botao.addEventListener('click', () => {
+   const inputText = document.querySelector('#input-search').value
+   pegarUsuarios(inputText)
+})
+
+async function pegarUsuarios(NameUser) {
+   const url = `https://api.github.com/users/${NameUser}`
    const response = await fetch(url)
    const data = await response.json()
-   console.log(data)
-   const {avatar_url, bio, name, repos_url} = data 
-   
+   const { avatar_url, bio, name} = data
+
    const perfil = document.querySelector('.profile-data')
    perfil.innerHTML = `
    <div class="info">
@@ -17,14 +20,17 @@ async function pegarUsuarios () {
       <p>${bio}</p>
    </div>
    </div>
-   <div class="repositories">
+   `
+   async function pegarRepositorios() {
+       perfil.innerHTML += `
       <h2>Repositórios</h2>
+      <div class="repositories">
       <ul>
-         <li><a href="${repos_url[i]}" target="_black">${repos_url[i].name }</li>
+         <li><a href="#">github</a></li>
       </ul>
-</div>`
+    </div>`
+      
+   }
 
-
+   // await pegarRepositorios()
 }
-console.log(await pegarUsuarios())
-
