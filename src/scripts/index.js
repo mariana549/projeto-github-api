@@ -21,7 +21,7 @@ async function pegarUsuarios(NameUser) {
    </div>
    </div>`
 
-   async function pegarRepositorios(i) {
+   async function pegarRepositorios() {
       const url = `https://api.github.com/users/${NameUser}/repos`
       const response = await fetch(url)
       const data = await response.json()
