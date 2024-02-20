@@ -9,6 +9,19 @@ const screen = {
             <p>${user.bio ?? "não possui bio 😢"}</p>
          </div>
          </div>`
+
+      let repositoriosItens = ''
+      user.repositories.forEach(repo => { repositoriosItens += `<li><a href="${repo.html_url}" target="_black">${repo.name}</a></li>`
+      })
+
+      if (user.repositories.length > 0) {
+         this.userProfile.innerHTML += `
+         <div class="repositories section">
+         <h2>Repositórios</h2>
+            <div class="repositories">
+            <ul> ${repositoriosItens} </ul>
+         </div>`
+      }
    }
 }
 
