@@ -1,8 +1,18 @@
 const botao = document.querySelector('#btn-search')
 
 botao.addEventListener('click', () => {
-   const inputText = document.querySelector('#input-search').value
-   pegarUsuarios(inputText)
+   const NameUser = document.querySelector('#input-search').value
+   pegarUsuarios(NameUser)
+})
+
+document.querySelector('#input-search').addEventListener('keyup', (e) => {
+   const NameUser = e.target.value
+   const key = e.which || e.keyCode
+   const isEnterkeypressed = key === 13
+
+   if (isEnterkeypressed){
+      pegarUsuarios(NameUser)
+   }
 })
 
 async function pegarUsuarios(NameUser) {
