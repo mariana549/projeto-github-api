@@ -3,6 +3,7 @@ const botao = document.querySelector('#btn-search')
 botao.addEventListener('click', () => {
    const NameUser = document.querySelector('#input-search').value
    pegarUsuarios(NameUser)
+   pegarRepositorios()
 })
 
 document.querySelector('#input-search').addEventListener('keyup', (e) => {
@@ -15,10 +16,13 @@ document.querySelector('#input-search').addEventListener('keyup', (e) => {
    }
 })
 
+async function user(NameUser){
+   const response = await fetch(`https://api.github.com/users/${NameUser}`)
+   return await response.json()
+}
+
 async function pegarUsuarios(NameUser) {
-   const url = `https://api.github.com/users/${NameUser}`
-   const response = await fetch(url)
-   const data = await response.json()
+
    const { avatar_url, bio, name } = data
 
    const perfil = document.querySelector('.profile-data')
@@ -33,7 +37,7 @@ async function pegarUsuarios(NameUser) {
 }
 
 async function repos(NameUser){
-   const response = await fetch( `https://api.github.com/users/${NameUser}/repos?per_page=10`)
+   const response = await fetch( `https://api.github.com/users/${NameUser}/repos`)
    return await response.json()
 }
 
@@ -45,6 +49,8 @@ async function pegarRepositorios(NameUser) {
          li += `<li><a href="${repo.html_url}" target="_black">${repo.name}</a></li>`
       })
 
+      console.log(li)
+
    const perfil = document.querySelector('.profile-data')
    perfil.innerHTML += `
    <div class="repositories">
@@ -54,4 +60,3 @@ async function pegarRepositorios(NameUser) {
    </div>`
 })
 }
- pegarRepositorios()
