@@ -1,4 +1,6 @@
-import { baseUrl, repositoriesQuantity } from "./variaveis.js"
+import { user } from "./services/user.js";
+
+import { repositories } from "./services/repos.js";
 
 document.querySelector('#btn-search').addEventListener('click', () => {
    const NameUser = document.querySelector('#input-search').value
@@ -16,16 +18,6 @@ document.querySelector('#input-search').addEventListener('keyup', (e) => {
    }
 })
 
-async function user(NameUser){
-   const response = await fetch(`${baseUrl}${NameUser}`)
-   return await response.json()
-}
-
-async function repos(NameUser){
-   const response = await fetch( `${baseUrl}${NameUser}/repos?per_page=${repositoriesQuantity}`)
-   return await response.json()
-}
-
 async function pegarUsuarios(NameUser) {
    user(NameUser).then(userData => {
       let perfilInfo = `
@@ -41,7 +33,7 @@ async function pegarUsuarios(NameUser) {
 }
 
 async function pegarRepositorios(NameUser) {
-   repos(NameUser).then(reposData => {
+   repositories(NameUser).then(reposData => {
       let li = '';
       reposData.forEach(repo => {
          li += `<li><a href="${repo.html_url}" target="_black">${repo.name}</a></li>`
