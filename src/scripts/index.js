@@ -21,24 +21,24 @@ async function user(NameUser){
    return await response.json()
 }
 
-async function pegarUsuarios(NameUser) {
-
-   const { avatar_url, bio, name } = data
-
-   const perfil = document.querySelector('.profile-data')
-   perfil.innerHTML = `
-   <div class="info">
-   <img src="${avatar_url}" alt="foto de perfil"/>
-   <div class="data">
-      <h1>${name ?? "não possui nome 😢"}</h1>
-      <p>${bio ?? "não possui bio 😢"}</p>
-   </div>
-   </div>`
-}
-
 async function repos(NameUser){
    const response = await fetch( `https://api.github.com/users/${NameUser}/repos`)
    return await response.json()
+}
+
+async function pegarUsuarios(NameUser) {
+   user(NameUser).then(userData => {
+      let perfilInfo = `
+      <div class="info">
+      <img src="${userData.avatar_url}" alt="foto de perfil"/>
+      <div class="data">
+         <h1>${userData.name ?? "não possui nome 😢"}</h1>
+         <p>${userData.bio ?? "não possui bio 😢"}</p>
+      </div>
+      </div>`
+
+      document.querySelector('.profile-data').innerHTML = perfilInfo
+   })
 }
 
 async function pegarRepositorios(NameUser) {
