@@ -1,6 +1,4 @@
-const botao = document.querySelector('#btn-search')
-
-botao.addEventListener('click', () => {
+document.querySelector('#btn-search').addEventListener('click', () => {
    const NameUser = document.querySelector('#input-search').value
    pegarUsuarios(NameUser)
    pegarRepositorios(NameUser)
