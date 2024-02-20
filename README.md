@@ -4,7 +4,7 @@ Este projeto é um desafio proposto pela DevQuest, uma plataforma de aprendizado
 
 ## veja o projeto 
 
-Clique ![aqui]() e veja o projeto funcionando.
+Clique [aqui]() e veja o projeto funcionando.
 
 ## Como usar 🛠️
 
