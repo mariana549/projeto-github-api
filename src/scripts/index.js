@@ -1,6 +1,6 @@
-import { user } from "./services/user.js";
-
-import { repositories } from "./services/repos.js";
+import { getUser } from "./services/user.js";
+import { getRepositories } from "./services/repos.js";
+import { user } from "./objects/user.js"
 
 document.querySelector('#btn-search').addEventListener('click', () => {
    const NameUser = document.querySelector('#input-search').value
@@ -19,7 +19,7 @@ document.querySelector('#input-search').addEventListener('keyup', (e) => {
 })
 
 async function pegarUsuarios(NameUser) {
-   user(NameUser).then(userData => {
+   getUser(NameUser).then(userData => {
       let perfilInfo = `
       <div class="info">
       <img src="${userData.avatar_url}" alt="foto de perfil"/>
@@ -33,7 +33,7 @@ async function pegarUsuarios(NameUser) {
 }
 
 async function pegarRepositorios(NameUser) {
-   repositories(NameUser).then(reposData => {
+   getRepositories(NameUser).then(reposData => {
       let li = '';
       reposData.forEach(repo => {
          li += `<li><a href="${repo.html_url}" target="_black">${repo.name}</a></li>`
