@@ -5,6 +5,10 @@ import { screen } from "./objects/screen.js";
 
 document.querySelector('#btn-search').addEventListener('click', () => {
    const NameUser = document.querySelector('#input-search').value
+   if (NameUser.length === 0){
+      alert('preencha o campo com o nome do usuário do GitHub')
+      return 
+   }
    getUserData(NameUser)
 })
 
@@ -13,6 +17,10 @@ document.querySelector('#input-search').addEventListener('keyup', (e) => {
    const key = e.which || e.keyCode
    const isEnterkeypressed = key === 13
    if (isEnterkeypressed){
+      if (NameUser.length === 0){
+         alert('preencha o campo com o nome do usuário do GitHub')
+         return 
+      }
       getUserData(NameUser)
    }
 })
