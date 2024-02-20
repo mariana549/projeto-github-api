@@ -1,6 +1,7 @@
 import { getUser } from "./services/user.js";
 import { getRepositories } from "./services/repos.js";
 import { user } from "./objects/user.js"
+import { screen } from "./objects/screen.js";
 
 document.querySelector('#btn-search').addEventListener('click', () => {
    const NameUser = document.querySelector('#input-search').value
@@ -19,17 +20,24 @@ document.querySelector('#input-search').addEventListener('keyup', (e) => {
 })
 
 async function pegarUsuarios(NameUser) {
-   getUser(NameUser).then(userData => {
-      let perfilInfo = `
-      <div class="info">
-      <img src="${userData.avatar_url}" alt="foto de perfil"/>
-      <div class="data">
-         <h1>${userData.name ?? "não possui nome 😢"}</h1>
-         <p>${userData.bio ?? "não possui bio 😢"}</p>
-      </div>
-      </div>`
-      document.querySelector('.profile-data').innerHTML = perfilInfo
-   })
+   const userResponse = await getUser(NameUser)
+   user.setInfo(userResponse)
+   console.log(user)
+   // user.setRepositories(repositories)
+
+   screen.reder(user)
+
+   // getUser(NameUser).then(userData => {
+   //    let perfilInfo = `
+   //    <div class="info">
+   //    <img src="${userData.avatar_url}" alt="foto de perfil"/>
+   //    <div class="data">
+   //       <h1>${userData.name ?? "não possui nome 😢"}</h1>
+   //       <p>${userData.bio ?? "não possui bio 😢"}</p>
+   //    </div>
+   //    </div>`
+   //    document.querySelector('.profile-data').innerHTML = perfilInfo
+   // })
 }
 
 async function pegarRepositorios(NameUser) {

@@ -6,7 +6,8 @@ const user = {
    repositories: [],
 
    setInfo(gitHubUser){
-      this.avatarUrl = gitHubUser.avatar_url 
+      this.avatarUrl = gitHubUser.avatar_url
+      console.log(this.avatarUrl)
       this.name = gitHubUser.name
       this.bio = gitHubUser.bio
       this.NameUser= gitHubUser.login
