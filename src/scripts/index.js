@@ -28,6 +28,12 @@ function validarEmptyInput(NameUser){
 
 async function getUserData(NameUser) {
    const userResponse = await getUser(NameUser)
+
+   if(userResponse.message === "Not Found"){
+      screen.rederNotFound()
+      return
+   }
+
    const repositoriesResponse = await getRepositories(NameUser)
 
    user.setInfo(userResponse)

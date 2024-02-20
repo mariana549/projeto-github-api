@@ -22,6 +22,9 @@ const screen = {
             <ul> ${repositoriosItens} </ul>
          </div>`
       }
+   },
+   rederNotFound(){
+      this.userProfile.innerHTML = "<h3>Usuario não encontrado</h3>"
    }
 }
 
