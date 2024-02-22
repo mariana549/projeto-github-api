@@ -2,6 +2,7 @@ import { getUser } from "./services/user.js";
 import { getRepositories } from "./services/repos.js";
 import { user } from "./objects/user.js"
 import { screen } from "./objects/screen.js";
+import { getEvents } from "./services/events.js";
 
 document.querySelector('#btn-search').addEventListener('click', () => {
    const NameUser = document.querySelector('#input-search').value
@@ -35,6 +36,14 @@ async function getUserData(NameUser) {
    }
 
    const repositoriesResponse = await getRepositories(NameUser)
+
+   const eventsResponse = await getEvents(NameUser)
+   let event = eventsResponse[0].repo.name
+   let events = eventsResponse[1].payload.commits[0].message
+
+   console.log(event)
+   console.log(events)
+   console.log(eventsResponse)
 
    user.setInfo(userResponse)
    user.setRepositories(repositoriesResponse)
