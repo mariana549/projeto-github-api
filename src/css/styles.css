@@ -152,6 +152,21 @@ main {
   display: none;
 }
 
+.event-data {
+  padding: 20px;
+  padding-bottom: none;
+
+}
+
+.event-data h2 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.event-data ul li {
+  padding: 8px 0px;
+}
+
 @media (max-width: 1280px) {
   .container {
     flex-direction: column;

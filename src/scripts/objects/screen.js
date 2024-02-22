@@ -23,6 +23,23 @@ const screen = {
             <ul> ${repositoriosItens} </ul>
          </div>`
       }
+
+      let EventItens = '';
+      let TiposEventos = user.eventos.filter(event => event.type === "PushEvent" ||  event.type === "CreateEvent")
+      console.log(TiposEventos)
+      
+      TiposEventos.forEach(evento => {
+         EventItens += `
+         <li>${evento.repo.name} - ${evento.payload.commits[0].message}</li>
+         `
+      })
+      if (TiposEventos.length > 0) {
+         this.userProfile.innerHTML += `
+         <div class="event-data">
+         <h2>Eventos</h2>
+            <ul> ${EventItens} </ul>
+         </div>`
+      }
    },
    rederNotFound(){
       this.userProfile.innerHTML = "<h3>Usuario não encontrado</h3>"
