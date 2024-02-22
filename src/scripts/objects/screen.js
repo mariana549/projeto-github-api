@@ -14,8 +14,7 @@ const screen = {
 
       let repositoriosItens = ''
       user.repositories.forEach(repo => { repositoriosItens += 
-         `
-         <li>
+         `<li>
          <a href="${repo.html_url}" target="_black">${repo.name}         
          <ul>
             <li class="data-repo">🍴 ${repo.forks}</li>
