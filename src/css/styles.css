@@ -119,6 +119,13 @@ main {
   font-size: 15px;  
   font-weight: 400;
   line-height: 23px;
+  margin-bottom: 15px;
+}
+
+.container .profile-data .info .seguidores{
+  padding: 10px;
+  border: 1px solid grey; 
+  border-radius: 7px;
 }
 
 /* REPOSITORIES */
