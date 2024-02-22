@@ -7,8 +7,8 @@ const screen = {
          <div class="data">
             <h1>${user.name ?? "não possui nome 😢"}</h1>
             <p>${user.bio ?? "não possui bio 😢"}</p>
-            <p class="seguidores">seguidores: ${user.followers}</p>
-            <p class="seguidores">seguindo: ${user.following}</p>
+            <p class="seguidores">Seguidores: ${user.followers ?? "não possui seguidores"}</p>
+            <p class="seguidores">Seguindo: ${user.following ?? "não segue niguém"}</p>
          </div>
          </div>`
 
@@ -31,7 +31,7 @@ const screen = {
       
       TiposEventos.forEach(evento => {
          EventItens += `
-         <li>${evento.repo.name} - ${evento.payload.commits[0].message}</li>
+         <li>${evento.repo.name} - ${evento.payload.commits[0].message ?? "evento sem mensagem"}</li>
          `
       })
       if (TiposEventos.length > 0) {
@@ -48,3 +48,4 @@ const screen = {
 }
 
 export { screen }
+
