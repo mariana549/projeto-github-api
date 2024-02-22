@@ -24,9 +24,7 @@ const screen = {
             <li class="data-repo">👨🏾‍💻 ${repo.language}</li>
          </ul>
          </a>
-         </li>
-         `
-         console.log(repo.watcher)
+         </li>`
       })
 
       if (user.repositories.length > 0) {
@@ -60,5 +58,3 @@ const screen = {
 }
 
 export { screen }
-
-// stargazers_count language watcher forks
