@@ -38,15 +38,10 @@ async function getUserData(NameUser) {
    const repositoriesResponse = await getRepositories(NameUser)
 
    const eventsResponse = await getEvents(NameUser)
-   let event = eventsResponse[0].repo.name
-   let events = eventsResponse[1].payload.commits[0].message
-
-   console.log(event)
-   console.log(events)
-   console.log(eventsResponse)
 
    user.setInfo(userResponse)
    user.setRepositories(repositoriesResponse)
+   user.setEvents(eventsResponse)
 
    screen.reder(user)
 }
