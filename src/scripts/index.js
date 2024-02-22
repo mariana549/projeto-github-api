@@ -36,6 +36,7 @@ async function getUserData(NameUser) {
    }
 
    const repositoriesResponse = await getRepositories(NameUser)
+   console.log(repositoriesResponse)
 
    const eventsResponse = await getEvents(NameUser)
 

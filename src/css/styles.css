@@ -150,6 +150,16 @@ main {
   transition: 0.3s ease-in-out;
 }
 
+.data-repo {
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 5px;
+  border: 1px solid grey;  
+  border-radius: 3px;
+  font-size: 12px;
+}  
+
+
 .container .profile-data .repositories ul li a:hover{
   background-color:hotpink;
   color: #fff

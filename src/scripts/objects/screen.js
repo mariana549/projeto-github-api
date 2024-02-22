@@ -13,7 +13,20 @@ const screen = {
          </div>`
 
       let repositoriosItens = ''
-      user.repositories.forEach(repo => { repositoriosItens += `<li><a href="${repo.html_url}" target="_black">${repo.name}</a></li>`
+      user.repositories.forEach(repo => { repositoriosItens += 
+         `
+         <li>
+         <a href="${repo.html_url}" target="_black">${repo.name}         
+         <ul>
+            <li class="data-repo">🍴 ${repo.forks}</li>
+            <li class="data-repo">⭐ ${repo.stargazers_count}</li>
+            <li class="data-repo">👀 ${repo.watchers}</li>
+            <li class="data-repo">👨🏾‍💻 ${repo.language}</li>
+         </ul>
+         </a>
+         </li>
+         `
+         console.log(repo.watcher)
       })
 
       if (user.repositories.length > 0) {
@@ -27,7 +40,6 @@ const screen = {
 
       let EventItens = '';
       let TiposEventos = user.eventos.filter(event => event.type === "PushEvent" ||  event.type === "CreateEvent")
-      console.log(TiposEventos)
       
       TiposEventos.forEach(evento => {
          EventItens += `
@@ -49,3 +61,4 @@ const screen = {
 
 export { screen }
 
+// stargazers_count language watcher forks
