@@ -40,7 +40,7 @@ const screen = {
       
       TiposEventos.forEach(evento => {
          EventItens += `
-         <li>${evento.repo.name} - ${evento.payload.commits[0].message ?? "evento sem mensagem"}</li>
+         <li>${evento.repo.name} -${evento.payload.commits[0].message ?? "evento sem mensagem"}</li>
          `
       })
       if (TiposEventos.length > 0) {
