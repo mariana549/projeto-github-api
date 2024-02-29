@@ -17,10 +17,10 @@ const screen = {
          `<li>
          <a href="${repo.html_url}" target="_black">${repo.name}         
          <ul>
-            <li class="data-repo">🍴 ${repo.forks}</li>
-            <li class="data-repo">⭐ ${repo.stargazers_count}</li>
-            <li class="data-repo">👀 ${repo.watchers}</li>
-            <li class="data-repo">👨🏾‍💻 ${repo.language}</li>
+            <li class="data-repo">🍴 ${repo.forks ?? "sem forks"}</li>
+            <li class="data-repo">⭐ ${repo.stargazers_count ?? "sem stars"}</li>
+            <li class="data-repo">👀 ${repo.watchers ?? "sem watchers"}</li>
+            <li class="data-repo">👨🏾‍💻 ${repo.language ?? "sem language"}</li>
          </ul>
          </a>
          </li>`
