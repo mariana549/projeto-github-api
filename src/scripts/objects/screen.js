@@ -1,6 +1,8 @@
+import { eventQuantity } from "../variaveis.js"
+
 const screen = {
    userProfile: document.querySelector('.profile-data'),
-   reder(user){
+   reder(user) {
       this.userProfile.innerHTML = `
          <div class="info">
          <img src="${user.avatarUrl}" alt="foto de perfil"/>
@@ -13,16 +15,17 @@ const screen = {
          </div>`
 
       let repositoriosItens = ''
-      user.repositories.forEach(repo => { repositoriosItens += 
-         `<li>
-         <a href="${repo.html_url}" target="_black">${repo.name}         
-         <ul>
-            <li class="data-repo">🍴 ${repo.forks ?? "sem forks"}</li>
-            <li class="data-repo">⭐ ${repo.stargazers_count ?? "sem stars"}</li>
-            <li class="data-repo">👀 ${repo.watchers ?? "sem watchers"}</li>
-            <li class="data-repo">👨🏾‍💻 ${repo.language ?? "sem language"}</li>
-         </ul>
-         </a>
+      user.repositories.forEach(repo => {
+         repositoriosItens +=
+            `<li>
+               <a href="${repo.html_url}" target="_black">${repo.name}         
+               <ul>
+                     <li class="data-repo">🍴 ${repo.forks ?? "sem forks"}</li>
+                     <li class="data-repo">⭐ ${repo.stargazers_count ?? "sem stars"}</li>
+                     <li class="data-repo">👀 ${repo.watchers ?? "sem watchers"}</li>
+                     <li class="data-repo">👨🏾‍💻 ${repo.language ?? "sem language"}</li>
+               </ul>
+               </a>
          </li>`
       })
 
@@ -36,14 +39,22 @@ const screen = {
       }
 
       let EventItens = '';
-      let TiposEventos = user.eventos.filter(event => event.type === "PushEvent" ||  event.type === "CreateEvent")
-      
-      TiposEventos.forEach(evento => {
-         EventItens += `
-         <li>${evento.repo.name} -${evento.payload.commits[0].message ?? "evento sem mensagem"}</li>
-         `
+      user.eventos.forEach(evento => {
+         if (evento.type === 'PushEvent') {
+            EventItens += `
+            <li>
+               <h3>${evento.repo.name}</h3>
+               <p> -- ${evento.payload.commits[0].message ?? "evento sem mensagem"}</p>
+            </li>`
+         }else {
+            EventItens += `
+            <li>
+            <h3>${evento.repo.name}</h3>
+            <p> -- ${evento.payload.ref_type ?? "evento sem mensagem"}</p>
+         </li>`
+         }
       })
-      if (TiposEventos.length > 0) {
+      if (user.eventos.length > 0) {
          this.userProfile.innerHTML += `
          <div class="event-data">
          <h2>Eventos</h2>
@@ -51,7 +62,7 @@ const screen = {
          </div>`
       }
    },
-   rederNotFound(){
+   rederNotFound() {
       this.userProfile.innerHTML = "<h3>Usuario não encontrado</h3>"
    }
 }
